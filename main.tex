@@ -25,53 +25,80 @@
 \tableofcontents
 \clearpage
 
-\section{Introduccion}
-El problema a abordar va a ser la resolucion en matlab de la ecuacion:
+\section{Introducción}
+El problema a abordar va a ser la resolución en Matlab de la ecuación:
 \begin{equation}
 f(x)=x+log(x)
 \end{equation}
-Es decir, queremos encontrar el punto $\overline{x}$ tal que $f($\overline{x}$)=0.
+Es decir, queremos encontrar el punto $\overline{x}$ tal que $f(\overline{x})=0$.
 
-\section{Funciones usadas}
+\section{Funciones Usadas}
 \subsection{PuntoFijo}
 Se trata de la función puntofijo(f,xo,error,max1), donde:
 \begin{itemize}
 \item f es la función a hallar el punto fijo
 \item xo es el punto inician donde se empieza la iteración
-\item error como de preciso se requiere el resultadp
+\item error como de preciso se requiere el resultado
 \item max1 es el número máximo de iteraciones que se quiere hacer
 \end{itemize}
-Ésta funcion lo que hace es ir iterando el punto la funcíon hasta que el error abosuto sea mas pequeño que el error pedido, a no ser de que se supere en número máximo de iteraciones, en cuyo caso no se habrá encontrado el punto buscado.
+Ésta funcion lo que hace es ir iterando el punto la función hasta que el error abosuto sea mas pequeño que el error pedido, a no ser de que se supere en número máximo de iteraciones, en cuyo caso no se habrá encontrado el punto buscado.
+\subsection{Simétrico}
+La función simetrico(x,n) simplemente hace el redondeo simétrico de n dígitos, donde:
+\begin{itemize}
+\item x es el número real a hacer el redondeo
+\item n es la posición donde se va a redondear, si el dígito n es mayor o igual que 5, aumenta uno su valor, si no se mantiene.
+\end{itemize}
 
-\section{Resolucion del Problema}
-Primero definimos tres metodos iterativos:
+\section{Resolución del Problema}
+Primero definimos tres métodos iterativos:
 \begin{equation}
 \begin{array}{ccc}
 \mathrm{I1:}x_{n+1}=log(x_{n}) & \mathrm{I2:}x_{n+1}=e^{-x_{n}} & \mathrm{I3:}x_{n+1}=\frac{x_{n}+e^{-x_{n}}}{2}
 \end{array}
 \end{equation}
-Que surgen de despejar x de distintas formas. Ahora estas 3 iteraciones son iteraciones de punto fijo. Con lo cual primero tenemos que ver cuan de los tres es el mas optimo.
+Que surgen de despejar x de distintas formas. Ahora estas 3 iteraciones son iteraciones de punto fijo. Con lo cual primero tenemos que ver cual de los tres es el mas óptimo.
 
 Primero vamos a ver donde estará aproximadamente la raíz de la ecuación. Como $f(0)<0$ y $f(1)>0$, entonces por Bolzano la raíz estará en el intervalo [0,1].
 
-Sungundo, definimos como:
+Segundo, definimos como:
 \begin{equation}
 \begin{array}{ccc}
 g_{1}:=log(x) & g_{2}:=e^{x} & g_{3}:=\frac{x+e^{-x}}{2}
 \end{array}
 \end{equation}
-Ahora hay que ver cual de ellas tiene derivada menor que 1 para que el metodo del punto fijo funcione. Derivando cada uno tenemos que:
+Ahora hay que ver cual de ellas tiene derivada menor que 1 para que el método del punto fijo funcione. Derivando cada uno tenemos que:
 \begin{equation}
 \begin{array}{ccc}
 max\{|g_{1}'|\}_{[0,1]}=+\infty & max\{|g_{2}'|\}_{[0,1]}=0.36 & max\{|g_{3}'|\}_{[0,1]}=0.31
 \end{array}
 \end{equation}
-Vemos que las funciones que cumplen la condición son $g_{3}$ y $g_{2}$ y como $g_{3}$ tiene menor valor,el más óptimo es $g_{3}$.
+Vemos que las funciones que cumplen la condición son $g_{3}$ y $g_{2}$ y como $g_{3}$ tiene menor valor, el más óptimo es $g_{3}$.
 
-Por ultimo solo tenemos que poner en matlab que ejecute el metodo del punto fijo en el punto inicial 0 y nos da como resultado: 0.56714329.
+Por último solo tenemos que poner en Matlab que ejecute el metodo del punto fijo en el punto inicial 0, con un error relativo de $10^{-8}$ y hecho en 13 iteraciones, nos da como resultado: 0.56714.
+
+Y se puede comprobar como:
+\begin{equation*}
+0.56714+\log{0.56714}\approx 0
+\end{equation*}
 
 \section{Conclusiones}
+Para encontrar la raíz de un polinomio cualquiera hay que tener en cuenta dos factores muy importantes:
+\begin{enumerate}
+\item Depende de la función que cojas. Por ejemplo, si hubiesemos cogido el metodo I2 entonces al calcular el método del punto fijo con las mismas condiciones de el anterior sale que se han hecho 32 iteraciones.
+\item El punto inicial cogido. Tambien depende bastante de x0 que tomemos al principio ya que ejecutamos el Método del punto fijo con el metodo I3, el correcto, si ponemos que el punto inicial es 0.5, el resultado se llega en 12 iteraciones. Es decir, ese punto es más óptimo. Pero si cogemos el punto inicial 3, se llega en 15 iteraciones. Como I3 era el metodo más óptimo no hay mucha diferencia.
+\end{enumerate}
+En conclusión el método del punto fijo es una herramienta muy potente para calcular raices de funciones, pero hay que tener cuidado como se usa, ya que dependiendo de la función cogida, a priori no se sabe cual va a ser el mejor método iterativo. en esta función las cosas funcionan bien, pero puede darse que en otras pequeños cambios en puntos iniciales conlleven a grandes cambios en la solución.
+
 \section{Referencias}
-[1] http://es.slideshare.net/emateucr/coloquios-ucr-2013gitsolis
+\begin{enumerate}
+\item{http://es.slideshare.net/emateucr/coloquios-ucr-2013gitsolis}
+\item{AUBANELL, A., BENSENY, A. Y DELSHAMS, A.  Útiles básicos de Cálculo Numérico.}
+\item{GARCIA MERAYO, F. y NEVOT LUNA, A.  Análisis Numérico.}
+\end{enumerate}
 
 \end{document}
+
+
+
+
+
