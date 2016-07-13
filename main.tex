@@ -41,11 +41,11 @@ Se trata de la función puntofijo(f,xo,error,max1), donde:
 \item error como de preciso se requiere el resultado
 \item max1 es el número máximo de iteraciones que se quiere hacer
 \end{itemize}
-Ésta funcion lo que hace es ir iterando el punto la función hasta que el error abosuto sea mas pequeño que el error pedido, a no ser de que se supere en número máximo de iteraciones, en cuyo caso no se habrá encontrado el punto buscado.
+Ésta función lo que hace es ir iterando el punto en la función hasta que el error abosluto sea mas pequeño que el error pedido, a no ser de que se supere en número máximo de iteraciones, en cuyo caso no se habrá encontrado el punto buscado.
 \subsection{Simétrico}
 La función simetrico(x,n) simplemente hace el redondeo simétrico de n dígitos, donde:
 \begin{itemize}
-\item x es el número real a hacer el redondeo
+\item x es el número real a hacer el redondeo.
 \item n es la posición donde se va a redondear, si el dígito n es mayor o igual que 5, aumenta uno su valor, si no se mantiene.
 \end{itemize}
 
@@ -56,7 +56,7 @@ Primero definimos tres métodos iterativos:
 \mathrm{I1:}x_{n+1}=log(x_{n}) & \mathrm{I2:}x_{n+1}=e^{-x_{n}} & \mathrm{I3:}x_{n+1}=\frac{x_{n}+e^{-x_{n}}}{2}
 \end{array}
 \end{equation}
-Que surgen de despejar x de distintas formas. Ahora estas 3 iteraciones son iteraciones de punto fijo. Con lo cual primero tenemos que ver cual de los tres es el mas óptimo.
+Que surgen de despejar x de distintas formas de la ecuación $x+\log{x}=0$. Ahora estas 3 iteraciones son iteraciones de punto fijo. Con lo cual primero tenemos que ver cual de los tres es el mas óptimo.
 
 Primero vamos a ver donde estará aproximadamente la raíz de la ecuación. Como $f(0)<0$ y $f(1)>0$, entonces por Bolzano la raíz estará en el intervalo [0,1].
 
@@ -66,7 +66,7 @@ Segundo, definimos como:
 g_{1}:=log(x) & g_{2}:=e^{x} & g_{3}:=\frac{x+e^{-x}}{2}
 \end{array}
 \end{equation}
-Ahora hay que ver cual de ellas tiene derivada menor que 1 para que el método del punto fijo funcione. Derivando cada uno tenemos que:
+Ahora hay que ver cual de ellas tiene derivada menor que 1 para que el método del punto fijo funcione, ya que asi la función sera contractiva y el metodo convergerá. Derivando cada uno tenemos que:
 \begin{equation}
 \begin{array}{ccc}
 max\{|g_{1}'|\}_{[0,1]}=+\infty & max\{|g_{2}'|\}_{[0,1]}=0.36 & max\{|g_{3}'|\}_{[0,1]}=0.31
@@ -85,9 +85,9 @@ Y se puede comprobar como:
 Para encontrar la raíz de un polinomio cualquiera hay que tener en cuenta dos factores muy importantes:
 \begin{enumerate}
 \item Depende de la función que cojas. Por ejemplo, si hubiesemos cogido el metodo I2 entonces al calcular el método del punto fijo con las mismas condiciones de el anterior sale que se han hecho 32 iteraciones.
-\item El punto inicial cogido. Tambien depende bastante de x0 que tomemos al principio ya que ejecutamos el Método del punto fijo con el metodo I3, el correcto, si ponemos que el punto inicial es 0.5, el resultado se llega en 12 iteraciones. Es decir, ese punto es más óptimo. Pero si cogemos el punto inicial 3, se llega en 15 iteraciones. Como I3 era el metodo más óptimo no hay mucha diferencia.
+\item El punto inicial cogido. Tambien depende bastante de x0 que tomemos al principio ya que si ejecutamos el método del punto fijo con el metodo I3, el correcto, si ponemos que el punto inicial es 0.5 en vez de 0, el resultado se llega en 12 iteraciones. Es decir, se llega mas rápido a la solución. Pero si cogemos el punto inicial 3, se llega en 15 iteraciones. Como I3 era el metodo más óptimo no hay mucha diferencia.
 \end{enumerate}
-En conclusión el método del punto fijo es una herramienta muy potente para calcular raices de funciones, pero hay que tener cuidado como se usa, ya que dependiendo de la función cogida, a priori no se sabe cual va a ser el mejor método iterativo. en esta función las cosas funcionan bien, pero puede darse que en otras pequeños cambios en puntos iniciales conlleven a grandes cambios en la solución.
+En conclusión el método del punto fijo es una herramienta muy potente para calcular raices de funciones, pero hay que tener cuidado como se usa, ya que dependiendo del método iterativo cogido, que a priori no se sabe cual va a ser el mejor, depende de la cota de su derivada, y del punto inicial. En esta función las cosas funcionan bien, pero puede darse que en otras pequeños cambios en puntos iniciales conlleven a grandes cambios en la solución.
 
 \section{Referencias}
 \begin{enumerate}
