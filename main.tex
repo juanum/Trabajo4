@@ -53,7 +53,7 @@ La función simetrico(x,n) simplemente hace el redondeo simétrico de n dígitos
 Primero definimos tres métodos iterativos:
 \begin{equation}
 \begin{array}{ccc}
-\mathrm{I1:}x_{n+1}=log(x_{n}) & \mathrm{I2:}x_{n+1}=e^{-x_{n}} & \mathrm{I3:}x_{n+1}=\frac{x_{n}+e^{-x_{n}}}{2}
+\mathrm{I1:}x_{n+1}=-log(x_{n}) & \mathrm{I2:}x_{n+1}=e^{-x_{n}} & \mathrm{I3:}x_{n+1}=\frac{x_{n}+e^{-x_{n}}}{2}
 \end{array}
 \end{equation}
 Que surgen de despejar x de distintas formas de la ecuación $x+\log{x}=0$. Ahora estas 3 iteraciones son iteraciones de punto fijo. Con lo cual primero tenemos que ver cual de los tres es el mas óptimo.
@@ -63,7 +63,7 @@ Primero vamos a ver donde estará aproximadamente la raíz de la ecuación. Como
 Segundo, definimos como:
 \begin{equation}
 \begin{array}{ccc}
-g_{1}:=log(x) & g_{2}:=e^{x} & g_{3}:=\frac{x+e^{-x}}{2}
+g_{1}:=-log(x) & g_{2}:=e^{x} & g_{3}:=\frac{x+e^{-x}}{2}
 \end{array}
 \end{equation}
 Ahora hay que ver cual de ellas tiene derivada menor que 1 para que el método del punto fijo funcione, ya que asi la función sera contractiva y el metodo convergerá. Derivando cada uno tenemos que:
