@@ -7,41 +7,23 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{titling}
 
-\pretitle{%
-  \begin{center}
-  \LARGE
-  \includegraphics[width=1\textwidth]{portada4.png}\\[\bigskipamount]
-}
-\posttitle{\end{center}}
-
-\title{}
-\author{}
+\title{Trabajo 4. Documento Latex usando Matlab.}
+\author{Alumno: Juan Antonio Rodríguez Lorente DNI: 48854839X}
 \date{}
 
 \begin{document}
 
 \maketitle
 
-\tableofcontents
-\clearpage
 
 \section{Introduccion}
 El problema a abordar va a ser la resolucion en matlab de la ecuacion:
 \begin{equation}
 f(x)=x+log(x)
 \end{equation}
-Es decir, queremos encontrar el punto $\overline{x}$ tal que $f($\overline{x}$)=0.
+Es decir, queremos encontrar el punto $\overline{x}$ tal que f($\overline{x}$)=0.
 
 \section{Funciones usadas}
-\subsection{PuntoFijo}
-Se trata de la función puntofijo(f,xo,error,max1), donde:
-\begin{itemize}
-\item f es la función a hallar el punto fijo
-\item xo es el punto inician donde se empieza la iteración
-\item error como de preciso se requiere el resultadp
-\item max1 es el número máximo de iteraciones que se quiere hacer
-\end{itemize}
-Ésta funcion lo que hace es ir iterando el punto la funcíon hasta que el error abosuto sea mas pequeño que el error pedido, a no ser de que se supere en número máximo de iteraciones, en cuyo caso no se habrá encontrado el punto buscado.
 
 \section{Resolucion del Problema}
 Primero definimos tres metodos iterativos:
@@ -70,8 +52,5 @@ Vemos que las funciones que cumplen la condición son $g_{3}$ y $g_{2}$ y como $
 
 Por ultimo solo tenemos que poner en matlab que ejecute el metodo del punto fijo en el punto inicial 0 y nos da como resultado: 0.56714329.
 
-\section{Conclusiones}
-\section{Referencias}
-[1] http://es.slideshare.net/emateucr/coloquios-ucr-2013gitsolis
 
 \end{document}
